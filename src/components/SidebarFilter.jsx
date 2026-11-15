@@ -27,22 +27,25 @@ function SidebarFilter() {
         </div>
       </div>
 
-      {/* Ползунок стоимости (Инпуты для связи со стейтом) */}
-      <div className="sidebar-filter__section">
-        <h4 className="sidebar-filter__subtitle">Стоимость</h4>
-        <div className="sidebar-filter__price-range">
-          <span>от {priceFrom}</span>
-          <span>до {priceTo}</span>
-        </div>
-        <input 
-          type="range" 
-          min="1000" 
-          max="10000" 
-          value={priceTo} 
-          onChange={(e) => setPriceTo(e.target.value)}
-          className="sidebar-filter__slider" 
-        />
-      </div>
+      {/* Интерактивные ползунки для регулирования диапазона */}
+<div className="sidebar-filter__sliders-container">
+  <input 
+    type="range" 
+    min="1000" 
+    max="15000" 
+    value={priceFrom} 
+    onChange={(e) => setPriceFrom(Number(e.target.value))} // Исправлено здесь
+    className="sidebar-filter__slider" 
+  />
+  <input 
+    type="range" 
+    min="1000" 
+    max="15000" 
+    value={priceTo} 
+    onChange={(e) => setPriceTo(Number(e.target.value))}
+    className="sidebar-filter__slider" 
+  />
+</div>
     </aside>
   );
 }
