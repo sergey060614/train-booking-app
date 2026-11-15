@@ -27,7 +27,7 @@ function HomePage() {
       {/* 1. Главный экран с формой поиска */}
       <section className="hero">
         <div className="hero__content">
-          <h1 className="hero__title">Всякие направления здесь</h1>
+          <h1 className="hero__title">направления</h1>
           
           <form className="search-form" onSubmit={handleSearch}>
             <div className="search-form__row">
