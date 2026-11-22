@@ -1,16 +1,62 @@
-# React + Vite
+# Система бронирования железнодорожных билетов
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Дипломный проект по профессии «Frontend-разработчик». Веб-приложение для поиска железнодорожных маршрутов, выбора вагонов и мест, оформления пассажиров и покупки билетов.
 
-Currently, two official plugins are available:
+🔗 **Демо-версия проекта:** [https://github.io](https://github.io)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Основной функционал
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Главная страница (`/`)**:
+  - Форма поиска маршрутов с автокомплитом городов и сменой направления.
+  - Информационные блоки «О нас», «Как это работает», «Отзывы» и якорная навигация по разделам.
+  - Форма подписки на рассылку в футере с валидацией и модальными уведомлениями.
+- **Выбор поезда (`/routes`)**:
+  - Фильтрация по датам, классу вагона (Купе, Плацкарт, Сидячий, Люкс), наличию Wi-Fi, экспрессу, диапазону стоимости и времени.
+  - Сортировка результатов по времени отправления, стоимости и длительности поездки.
+  - Постраничная навигация и настройка количества отображаемых карточек (`5 / 10 / 20`).
+  - Блок «Последние билеты» в боковой панели.
+- **Выбор мест (`/seats`)**:
+  - Переключение между классами обслуживания и выбор одного или нескольких вагонов одновременно.
+  - Интерактивная схема вагона с отображением свободных, занятых и выбранных мест.
+  - Выбор дополнительных опций обслуживания ФПК (кондиционер, Wi-Fi, постельное бельё) и расчёт итоговой стоимости.
+- **Оформление пассажиров (`/passengers`)**:
+  - Формы ввода данных для каждого выбранного билета (взрослый / детский, ФИО, пол, дата рождения, паспорт РФ или свидетельство о рождении).
+  - Валидация всех обязательных полей и формата документов с подсветкой ошибок.
+- **Оплата и подтверждение (`/payment`, `/confirmation`, `/success`)**:
+  - Ввод контактных данных плательщика и выбор способа оплаты (онлайн или наличными).
+  - Сводная проверка всех данных заказа с возможностью вернуться и отредактировать любой этап.
+  - Отправка заказа на сервер и финальный экран благодарности с оценкой сервиса.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Технологический стек
+
+- **React 19** — компонентная архитектура и управление состоянием.
+- **React Router (`HashRouter`)** — клиентская маршрутизация между этапами бронирования.
+- **Vite** — сборка проекта и деплой на GitHub Pages (`gh-pages`).
+- **CSS3 (методология БЭМ)** — стилизованная вёрстка по макетам Figma без сторонних UI-фреймворков.
+- **REST API** — интеграция с учебным сервером (с резервным fallback при недоступности бэкенда).
+
+---
+
+## Локальный запуск
+
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com
+   cd train-booking-app
+   ```
+2. Установите зависимости:
+   ```bash
+   npm install
+   ```
+3. Запустите проект в режиме разработки:
+   ```bash
+   npm run dev
+   ```
+4. Для сборки продакшн-версии выполните:
+   ```bash
+   npm run build
+   ```
