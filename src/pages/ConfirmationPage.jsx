@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ProgressBar from '../components/ProgressBar';
 import TripDetailsSidebar from '../components/TripDetailsSidebar';
+import InfoModal from '../components/InfoModal';
+import { createOrder } from '../api/trainApi';
 import './RoutesPage.css';
 import './ConfirmationPage.css';
 
@@ -16,6 +19,9 @@ export default function ConfirmationPage() {
     seats = [],
     pricePerSeat = 0,
   } = orderData;
+
+  const [sending, setSending] = useState(false);
+  const [modal, setModal] = useState({ open: false, type: 'error', title: '', text: '' });
 
   const totalSum = seats.length * pricePerSeat;
 
@@ -38,6 +44,56 @@ export default function ConfirmationPage() {
       </main>
     );
   }
+
+  const handleConfirm = async () => {
+    setSending(true);
+    try {
+      const payload = {
+        user: {
+          first_name: orderData.payer?.firstName || '',
+          last_name: orderData.payer?.lastName || '',
+          patronymic: orderData.payer?.middleName || '',
+          phone: orderData.contactPhone || '',
+          email: orderData.contactEmail || '',
+          payment_method: paymentMethod,
+        },
+        departure: {
+          route_direction_id: route.id,
+          seats: passengers.map((p, idx) => ({
+            coach_id: String(orderData.wagonNumber || '07'),
+            person_info: {
+              is_adult: p.type !== 'child',
+              first_name: p.firstName,
+              last_name: p.lastName,
+              patronymic: p.patronymic || '',
+              gender: p.gender !== 'female',
+              birthday: p.birthDate,
+              document_type: p.docType === 'passport' ? 'паспорт' : 'свидетельство о рождении',
+              document_data:
+                p.docType === 'passport'
+                  ? `${p.passportSeries} ${p.passportNumber}`
+                  : p.birthCertNumber,
+            },
+            seat_number: seats[idx] || idx + 1,
+            is_child: p.type === 'child',
+            include_children_seat: false,
+          })),
+        },
+      };
+
+      await createOrder(payload);
+      navigate('/success', { state: orderData });
+    } catch (err) {
+      setModal({
+        open: true,
+        type: 'error',
+        title: 'Ошибка при оформлении заказа',
+        text: err.message || 'Не удалось отправить заказ. Попробуйте снова.',
+      });
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <main className="routes-page">
@@ -177,13 +233,22 @@ export default function ConfirmationPage() {
             <button
               type="button"
               className="button btn-buy-tickets"
-              onClick={() => navigate('/success', { state: orderData })}
+              disabled={sending}
+              onClick={handleConfirm}
             >
-              ПОДТВЕРДИТЬ
+              {sending ? 'ОФОРМЛЕНИЕ...' : 'ПОДТВЕРДИТЬ'}
             </button>
           </div>
         </section>
       </div>
+
+      <InfoModal
+        isOpen={modal.open}
+        type={modal.type}
+        title={modal.title}
+        text={modal.text}
+        onClose={() => setModal((prev) => ({ ...prev, open: false }))}
+      />
     </main>
   );
 }
