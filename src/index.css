@@ -1,184 +1,547 @@
 :root {
-  /* Фирменные цвета поезда (настройте точные хэши по Figma) */
-  --text: #292929;
-  --text-h: #000000;
-  --bg: #ffffff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #ffa500; /* Основной оранжевый цвет кнопок */
-  --accent-hover: #ffb732;
-  --accent-active: #e69500;
-  --shadow: rgba(0, 0, 0, 0.1) 0 4px 6px -1px, rgba(0, 0, 0, 0.06) 0 2px 4px -1px;
+  --orange: #ffa800;
+  --orange-hover: #ffca62;
+  --dark: #292929;
+  --gray: #e5e5e5;
+  --gray-disabled: #928f94;
+  --text: #333333;
+}
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-
-  font: 16px/150% var(--sans);
-  color: var(--text);
-  background: var(--bg);
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
 }
 
-/* Главная обертка React-приложения */
-#root {
-  width: 100%; /* Убираем жесткие 1126px для полноценной верстки шапки и подвала */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.page {
+  position: relative;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-/* Базовые стили для заголовков */
-h1, h2, h3, h4 {
-  font-family: var(--heading);
-  color: var(--text-h);
-  margin: 0;
-}
-
-/* Глобальные стили для кнопок дипломного проекта (3 состояния) */
+/* ===== Единые состояния кнопок по UI-киту Figma ===== */
 .button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 24px;
-  background-color: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 16px;
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: all 0.2s ease;
 }
 
-.button:hover {
-  background-color: var(--accent-hover);
+.button:hover:not(:disabled) {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.button:active {
-  background-color: var(--accent-active);
+.button:active:not(:disabled) {
+  background-color: transparent !important;
+  border-color: var(--orange) !important;
+  color: var(--orange) !important;
+  box-shadow: none;
 }
 
 .button:disabled {
-  background-color: #939393;
+  background-color: var(--gray-disabled) !important;
+  border-color: var(--gray-disabled) !important;
+  color: #ffffff !important;
   cursor: not-allowed;
-  opacity: 0.6;
-}
-.hero {
-  background-color: #2d2c38; /* Замените на фоновое изображение из Figma позже */
-  color: #fff;
-  padding: 80px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hero__content {
-  width: 100%;
-  max-width: 800px;
-  text-align: left;
-}
-.hero__title {
-  font-size: 48px;
-  color: #fff;
-  margin-bottom: 40px;
-  line-height: 1.2;
+  box-shadow: none;
 }
 
-/* --- Стили формы поиска билетов --- */
+/* ===== Хедер ===== */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.header__container,
+.nav__container,
+.hero__container,
+.section-about__container,
+.section-reviews__container,
+.section-how__container,
+.footer__container,
+.footer__bottom {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header__container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.header__logo {
+  font-weight: 900;
+  font-size: 36px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav {
+  background-color: #292929;
+  height: 94px;
+}
+
+.nav__container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.nav a:hover,
+.footer__social a:hover {
+  color: var(--orange-hover);
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 985px;
+  padding: 160px 20px 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url('/train-booking-app/images/hero-train.jpg') center / cover no-repeat;
+  border-bottom: 8px solid var(--orange);
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero__container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.hero__slogan {
+  width: 506px;
+  max-width: 100%;
+  font-size: 72px;
+  line-height: 1.18;
+  color: #ffffff;
+  margin: 0 0 242px;
+  flex-shrink: 0;
+}
+
+.hero__slogan_light,
+.hero__slogan_bold {
+  display: block;
+}
+
+.hero__slogan_light { font-weight: 100; }
+.hero__slogan_bold { font-weight: 700; }
+
+/* ===== Форма поиска ===== */
 .search-form {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 30px;
-  border-radius: 4px;
+  width: 729px;
+  max-width: 100%;
+  min-height: 574px;
+  background-color: rgba(41, 41, 41, 0.8);
+  padding: 48px 56px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 36px;
+  flex-shrink: 0;
 }
+
+.search-form__label {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 300;
+  display: block;
+  margin-bottom: 12px;
+}
+
 .search-form__row {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.search-form__field {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.search-form__label {
-  font-size: 14px;
-  color: #e5e5e5;
-}
-.search-form__input {
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #000;
-}
-.search-form__submit {
-  align-self: flex-end;
-  padding: 14px 40px;
+  align-items: center;
+  gap: 16px;
 }
 
-/* --- Стили информационных секций --- */
-.info-section {
-  padding: 60px 20px;
-  text-align: left;
-}
-.info-section_gray {
-  background-color: #f7f9fa;
-}
-.info-section__container {
-  max-width: 1126px;
-  margin: 0 auto;
-}
-.info-section__title {
-  font-size: 32px;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-  border-bottom: 2px solid var(--accent);
-  display: inline-block;
-  padding-bottom: 8px;
-}
-.info-section__text {
+.search-form__swap {
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
   font-size: 18px;
+  padding: 0;
+  line-height: 1;
+}
+
+.search-form__input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #292929;
+  font-family: inherit;
+}
+
+.search-form__submit {
+  align-self: flex-end;
+  margin-top: auto;
+  background-color: var(--orange);
+  color: #292929;
+  padding: 16px 40px;
+}
+
+/* ===== Заголовки секций ===== */
+.section-title {
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 30px;
+}
+
+.section-title_light {
+  color: #ffffff;
+}
+
+/* ===== О нас ===== */
+.section-about {
+  background-color: #ffffff;
+  padding: 60px 0;
+}
+
+.section-about__quote {
+  margin: 0;
+  border-left: 4px solid var(--orange);
+  padding-left: 24px;
+  font-size: 24px;
   line-height: 1.6;
 }
 
-/* Сетка шагов */
-.steps-grid {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: 20px;
-}
-.steps-grid__item {
-  flex: 1;
-  text-align: center;
-  background: #fff;
-  padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-.steps-grid__icon {
-  font-size: 40px;
-  margin-bottom: 16px;
+.section-about__quote p {
+  margin: 0 0 16px;
 }
 
-/* Отзывы */
-.reviews-list__item {
-  background: #fff;
-  padding: 20px;
-  border-left: 4px solid var(--accent);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+.section-about__quote p:last-child {
+  margin-bottom: 0;
 }
-.reviews-list__author {
-  font-weight: bold;
-  margin-bottom: 8px;
+
+/* ===== Как это работает ===== */
+.section-how {
+  background:
+    linear-gradient(rgba(255, 168, 0, 0.9), rgba(255, 168, 0, 0.9)),
+    url('/train-booking-app/images/how-tracks.jpg') center / cover no-repeat;
+  padding: 60px 0 70px;
+}
+
+.section-how__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Контурные кнопки по UI-киту (Узнать больше, ОТПРАВИТЬ) */
+.button_outline,
+.subscribe__btn {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.button_outline {
+  padding: 12px 32px;
+}
+
+.button_outline:hover,
+.subscribe__btn:hover {
+  background-color: var(--orange-hover);
+  border-color: var(--orange-hover);
+  color: var(--dark);
+}
+
+.button_outline:active,
+.subscribe__btn:active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: var(--dark);
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 50px;
+}
+
+.steps__item {
+  text-align: center;
+  max-width: 180px;
+}
+
+.steps__icon {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+}
+
+.steps__text {
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ===== Отзывы ===== */
+.section-reviews {
+  padding: 60px 0;
+  background-color: #ffffff;
+}
+
+.reviews {
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
+}
+
+.review {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex: 1;
+}
+
+.review__photo,
+.review__photo img {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.review__photo {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.review__photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.review__name {
+  margin: 4px 0 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.review__text {
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+  color: #666666;
+}
+
+.reviews__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.reviews__dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+
+.reviews__dot_active {
+  background-color: #c4c4c4;
+}
+
+/* ===== Футер ===== */
+.footer {
+  background-color: var(--dark);
+  color: #ffffff;
+}
+
+.footer__container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.footer__title {
+  font-size: 18px;
+  margin: 0 0 20px;
+}
+
+.footer__text {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+.footer__text_social {
+  margin-top: 24px;
+}
+
+.footer__contacts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer__contacts a,
+.footer__social a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.subscribe {
+  display: flex;
+  gap: 12px;
+}
+
+.subscribe__input {
+  flex: 1;
+  max-width: 260px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.subscribe__btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer__social {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__social a {
+  font-size: 18px;
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.footer__logo {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 1400px) {
+  .search-form {
+    width: 600px;
+    min-height: 0;
+    padding: 40px;
+  }
+
+  .hero__slogan {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 0;
+    padding-top: 160px;
+    padding-bottom: 60px;
+  }
+
+  .hero__container,
+  .reviews,
+  .footer__container {
+    flex-direction: column;
+  }
+
+  .hero__container {
+    align-items: flex-start;
+  }
+
+  .hero__slogan {
+    font-size: 48px;
+    margin-bottom: 24px;
+  }
+
+  .search-form {
+    width: 100%;
+    padding: 28px 24px;
+    gap: 20px;
+  }
+
+  .section-about__quote {
+    font-size: 18px;
+  }
+
+  .steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .section-how__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 }

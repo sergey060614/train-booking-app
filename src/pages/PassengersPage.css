@@ -1,0 +1,273 @@
+.passengers-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.passenger-card {
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.passenger-card__header {
+  background-color: #f9f9f9;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.passenger-card__toggle {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 30px;
+  color: #292929;
+  cursor: pointer;
+}
+
+.passenger-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  color: var(--orange);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.passenger-toggle-icon_open {
+  border-color: #928f94;
+  color: #928f94;
+}
+
+.passenger-card__remove {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #928f94;
+  cursor: pointer;
+}
+
+.passenger-card__body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.pass-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pass-grid-2 {
+  display: flex;
+  gap: 36px;
+  align-items: flex-end;
+}
+
+.pass-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pass-label {
+  font-size: 16px;
+  color: #928f94;
+}
+
+.pass-input,
+.pass-select {
+  height: 50px;
+  padding: 0 16px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 18px;
+  color: #292929;
+  background-color: #ffffff;
+}
+
+.pass-select {
+  min-width: 260px;
+}
+
+/* Переключатель пола М / Ж */
+.gender-switch {
+  display: flex;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 50px;
+}
+
+.gender-btn {
+  width: 100px;
+  border: none;
+  background-color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  cursor: pointer;
+}
+
+.gender-btn_active {
+  background-color: var(--orange);
+}
+
+.pass-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 18px;
+  color: #292929;
+  cursor: pointer;
+}
+
+.pass-checkbox input {
+  width: 24px;
+  height: 24px;
+  accent-color: var(--orange);
+}
+
+.pass-doc-section {
+  padding-top: 28px;
+  border-top: 1px dashed #c4c4c4;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Кнопка «Следующий пассажир» */
+.btn-next-pass {
+  background: transparent;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  color: #292929;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.btn-next-pass:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+/* Кнопка «Добавить пассажира» — соответствует btn-add-passenger из JSX */
+.btn-add-passenger {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 36px;
+  font-family: inherit;
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-add-passenger__plus {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.passenger-card__error {
+  background-color: #eeb6a2;
+  border-top: 1px solid #c4c4c4;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: #292929;
+}
+
+.passenger-card__error-icon {
+  width: 24px;
+  height: 24px;
+  line-height: 22px;
+  text-align: center;
+  border: 1.5px solid #292929;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* Кнопка «Далее» — общие стили, если они не заданы в другом файле */
+.button,
+.btn-next {
+  background-color: var(--orange);
+  border: none;
+  border-radius: 5px;
+  padding: 14px 40px;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-next:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .pass-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Зелёная плашка «Готово» */
+.passenger-card__done {
+  background-color: #c6f0c2;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: #292929;
+}
+
+.passenger-card__done-icon {
+  width: 24px;
+  height: 24px;
+  line-height: 22px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  color: #292929;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.btn-next-pass_in-done {
+  margin-left: auto;
+  background-color: #ffffff;
+}
+

@@ -1,0 +1,305 @@
+/* ===== Страница выбора поездов (/routes) ===== */
+.routes-page {
+  background-color: #f7f5f9;
+  min-height: 100vh;
+}
+
+.routes-hero {
+  min-height: 590px;
+  padding: 230px 20px 60px;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url('C:\Users\sergey\OneDrive\Desktop\train-booking-app\public\images\routes-bg.jpg') center / cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+.routes-hero__container {
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.search-form_horizontal {
+  width: 100%;
+  min-height: auto;
+  background-color: rgba(41, 41, 41, 0.8);
+  padding: 28px 40px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 36px;
+}
+
+.search-form_horizontal .search-form__submit {
+  grid-column: 2;
+  justify-self: end;
+  margin-top: 0;
+}
+
+.routes__loading {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 20px;
+  color: #292929;
+}
+
+/* Основная сетка: сайдбар + список поездов */
+.routes-layout {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 60px 20px 100px;
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.routes-layout > aside,
+.sidebar {
+  width: 360px;
+  flex-shrink: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+
+.routes-list {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: #928f94;
+}
+
+/* Карточка поезда */
+.route-card {
+  display: flex;
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.route-card__left {
+  width: 196px;
+  flex-shrink: 0;
+  background-color: #e4e0e9;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.train-icon {
+  font-size: 42px;
+}
+
+.train-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3e3c41;
+}
+
+.train-route {
+  font-size: 14px;
+  color: #292929;
+  line-height: 1.4;
+}
+
+.train-name {
+  font-size: 13px;
+  color: #928f94;
+}
+
+.route-card__center {
+  flex: 1;
+  padding: 40px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-right: 1px dashed #e5e5e5;
+}
+
+.way-point {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.way-point .time {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.way-point .city {
+  font-size: 16px;
+  color: #292929;
+}
+
+.way-duration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #c4c4c4;
+  font-size: 16px;
+}
+
+.way-arrow {
+  color: var(--orange);
+  font-size: 22px;
+}
+
+.route-card__right {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.route-card__options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.car-option {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.car-type {
+  color: #3e3c41;
+  width: 85px;
+}
+
+.car-seats {
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.car-price {
+  color: #928f94;
+  margin-left: auto;
+}
+
+.car-price strong {
+  font-size: 20px;
+  color: #2d2b2f;
+}
+
+.btn-select {
+  width: 100%;
+  height: 42px;
+  background-color: var(--orange);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+.btn-select:hover {
+  background-color: #ffb841;
+}
+
+/* Шапка списка (сортировка и лимит) */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  color: #928f94;
+}
+
+.list-header__controls {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.list-sort__select {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 18px;
+  color: #292929;
+  cursor: pointer;
+}
+
+.list-limit__btn {
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 18px;
+  color: #928f94;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.list-limit__btn_active {
+  color: #292929;
+  font-weight: 700;
+}
+
+.way-point .station {
+  font-size: 14px;
+  color: #928f94;
+}
+
+.route-card__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.route-card__icons {
+  color: #c4c4c4;
+  font-size: 16px;
+  letter-spacing: 6px;
+}
+
+/* Пагинация */
+.routes-pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.page-btn {
+  width: 75px;
+  height: 75px;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 30px;
+  font-weight: 700;
+  color: #928f94;
+  cursor: pointer;
+}
+
+.page-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.page-btn_active {
+  background-color: var(--orange);
+  border-color: var(--orange);
+  color: #ffffff;
+}

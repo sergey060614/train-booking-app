@@ -1,0 +1,164 @@
+.confirm-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.confirm-card {
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.confirm-card__title {
+  margin: 0;
+  padding: 28px 32px;
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+  border-bottom: 1px solid #928f94;
+}
+
+.confirm-train-box {
+  border: none;
+  box-shadow: none;
+}
+
+.confirm-edit-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.btn-confirm-edit {
+  width: 233px;
+  height: 39px;
+  background-color: transparent;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 700;
+  color: #292929;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-confirm-edit:active {
+  background-color: var(--orange);
+  border-color: var(--orange);
+  color: #292929;
+  box-shadow: none;
+}
+
+
+/* Блок пассажиров */
+.confirm-passengers-body {
+  display: flex;
+  align-items: stretch;
+}
+
+.confirm-passengers-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirm-passenger-item {
+  padding: 28px 32px;
+  display: flex;
+  gap: 32px;
+  border-bottom: 1px dashed #c4c4c4;
+}
+
+.confirm-passenger-item:last-child {
+  border-bottom: none;
+}
+
+.confirm-passenger-avatar {
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  font-size: 18px;
+  color: #292929;
+  flex-shrink: 0;
+}
+
+.avatar-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: var(--orange);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.confirm-passenger-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.confirm-passenger-name {
+  font-size: 18px;
+  color: #292929;
+}
+
+.confirm-passenger-meta {
+  font-size: 18px;
+  color: #928f94;
+}
+
+.confirm-passengers-aside {
+  width: 280px;
+  padding: 28px 24px;
+  border-left: 1px dashed #c4c4c4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.confirm-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 30px;
+  color: #292929;
+}
+
+.confirm-total-row strong {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.confirm-total-row strong span {
+  color: #928f94;
+  font-weight: 400;
+}
+
+/* Способ оплаты */
+.confirm-payment-body {
+  padding: 36px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.confirm-payment-text {
+  font-size: 24px;
+  color: #292929;
+}
+
+.confirm-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}

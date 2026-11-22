@@ -1,0 +1,109 @@
+.payment-card {
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.payment-section {
+  padding: 32px 36px;
+  border-bottom: 1px solid #928f94;
+}
+
+.payment-section_last {
+  border-bottom: none;
+  padding-bottom: 48px;
+}
+
+.payment-card__heading {
+  margin: 0 0 28px;
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.payment-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.payment-single-col {
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Чекбоксы выбора способа оплаты */
+.payment-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 24px;
+  color: #928f94;
+  cursor: pointer;
+}
+
+.payment-checkbox input {
+  width: 28px;
+  height: 28px;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+
+.payment-checkbox_active {
+  color: var(--orange);
+}
+
+.payment-online-list {
+  margin-top: 28px;
+  display: flex;
+  gap: 70px;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #292929;
+}
+
+.payment-cash-block {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px dashed #c4c4c4;
+}
+
+/* Кнопка КУПИТЬ БИЛЕТЫ под карточкой справа */
+.payment-footer {
+  margin-top: 48px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-buy-tickets {
+  width: 323px;
+  height: 60px;
+  background-color: var(--orange);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-buy-tickets:hover {
+  background-color: #ffb841;
+}
+
+@media (max-width: 1024px) {
+  .payment-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-online-list {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

@@ -1,0 +1,268 @@
+/* ===== Страница выбора мест (/seats) ===== */
+.seats-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.seats-page-title {
+  margin: 0 0 28px;
+  font-size: 30px;
+  font-weight: 500;
+  color: #292929;
+  text-transform: uppercase;
+}
+
+.seats-card {
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.seats-card__top {
+  padding: 24px;
+}
+
+.btn-change-train {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  color: #292929;
+  cursor: pointer;
+}
+
+.btn-change-train__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 40px;
+  background-color: var(--orange);
+  border-radius: 5px;
+  font-size: 18px;
+  color: #ffffff;
+  transform: rotate(180deg);
+}
+
+.seats-train-bar {
+  background-color: #f7f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 24px;
+}
+
+.seats-train-bar__left,
+.seats-train-bar__way,
+.seats-train-bar__duration {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.seats-train-bar__num,
+.seats-train-bar__time {
+  font-weight: 700;
+  font-size: 22px;
+  color: #292929;
+}
+
+.seats-train-bar__station {
+  font-size: 14px;
+  color: #928f94;
+}
+
+.seats-block {
+  padding: 28px 24px;
+  border-bottom: 1px dashed #c4c4c4;
+}
+
+.seats-block__title {
+  margin: 0 0 20px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #292929;
+}
+
+.ticket-counts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.ticket-count-box {
+  padding: 16px;
+  border-radius: 5px;
+}
+
+.ticket-count-box_active {
+  background-color: #f7f6f6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-count-box__input {
+  background-color: #ffffff;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 16px;
+}
+
+.ticket-count-box__desc {
+  font-size: 14px;
+  color: #928f94;
+  margin-top: 12px;
+}
+
+.wagon-types {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+
+.wagon-type-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 20px;
+  color: #928f94;
+}
+
+.wagon-type-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.wagon-type-btn__icon {
+  font-size: 38px;
+}
+
+.wagon-type-btn_active {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.wagon-numbers-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 168, 0, 0.44);
+  padding: 10px 24px;
+}
+
+.wagon-numbers-bar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wagon-num-btn {
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.wagon-num-btn_active {
+  color: #ffffff;
+}
+
+.wagon-instance + .wagon-instance {
+  border-top: 1px dashed #928f94;
+}
+
+.wagon-details {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 28px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.wagon-details__num {
+  width: 170px;
+  background-color: #ffd98f;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wagon-details__num strong {
+  font-size: 64px;
+  line-height: 1;
+}
+
+.wagon-details__col {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wagon-details__head {
+  color: #928f94;
+}
+
+.services-block {
+  display: flex;
+  gap: 10px;
+}
+
+.service-icon-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.service-icon-btn_active {
+  background-color: #fdb935;
+  border-color: #fdb935;
+}
+
+.seats-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.seats-total strong {
+  font-size: 32px;
+  color: var(--orange);
+}
+
+.btn-next {
+  width: 222px;
+  height: 60px;
+  background-color: var(--orange);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-next:disabled {
+  background-color: #928f94;
+  cursor: not-allowed;
+}

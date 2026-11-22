@@ -1,0 +1,160 @@
+.routes-layout .trip-sidebar,
+.trip-sidebar {
+  width: 360px;
+  flex-shrink: 0;
+  background-color: #3e3c41;
+  color: #ffffff;
+}
+
+.trip-sidebar {
+  width: 360px;
+  flex-shrink: 0;
+  background-color: #3e3c41;
+  color: #ffffff;
+}
+
+.trip-sidebar__header {
+  padding: 32px 28px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  color: #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.trip-sidebar__section {
+  padding: 28px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.trip-sidebar__toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.trip-sidebar__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.trip-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #ffa800;
+  color: #3e3c41;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.trip-badge_back {
+  transform: rotate(180deg);
+}
+
+.trip-date {
+  font-size: 16px;
+  font-weight: 400;
+  color: #e5e5e5;
+}
+
+.trip-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.trip-sidebar__content {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.trip-row,
+.trip-times,
+.trip-stations {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 18px;
+  color: #e5e5e5;
+}
+
+.trip-right {
+  text-align: right;
+}
+
+.trip-time {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.trip-dur {
+  text-align: center;
+  font-size: 14px;
+}
+
+.trip-arrow {
+  display: block;
+  color: #ffa800;
+  font-size: 20px;
+}
+
+.trip-city {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.trip-sub {
+  font-size: 14px;
+  color: #928f94;
+}
+
+.trip-price {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.trip-price span {
+  color: #928f94;
+  font-weight: 400;
+}
+
+.trip-sidebar__total {
+  padding: 32px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.trip-sidebar__total strong {
+  font-size: 44px;
+  color: #ffa800;
+}
+
+.trip-sidebar__total strong span {
+  color: #e5e5e5;
+  font-weight: 400;
+}
